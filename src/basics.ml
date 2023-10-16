@@ -138,9 +138,9 @@ let addgenerator x = (fun y -> x + y)
 
 let uniq lst = 
 
-  fold (fun a x -> if (member x a) == false then x :: a else a) [] lst
-
+  fold (fun a x -> if ((fold (fun a x -> if x == target then true else a) false lst) x a) == false then x :: a else a) [] lst
+(*
 let member target lst = 
   fold (fun a x -> if x == target then true else a) false lst
-
+*)
 let ap fns args = fold (fun a x -> a @ (map x args)) [] fns
