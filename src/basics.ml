@@ -142,6 +142,5 @@ let uniq lst =
 
 let member target lst = 
   fold (fun a x -> if x == target then true else a) false lst
-in
 
 let ap fns args = fold (fun a x -> a @ (map x args)) [] fns
