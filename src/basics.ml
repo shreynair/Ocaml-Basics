@@ -113,7 +113,6 @@ let is_present lst x = map (fun y -> if y == x then 1 else 0) lst
 let count_occ lst target = fold (fun a x -> if x == target then a + 1 else a) 0 lst
   
 let jumping_tuples lst1 lst2 = failwith "unimplemented"
-
   (*
   let combined = zip lst1 lst2 in
 
@@ -134,13 +133,17 @@ let jumping_tuples lst1 lst2 = failwith "unimplemented"
   (jumping_tuples_helper combined 0) @ (jumping_tuples_helper combined 1)
   *)
 
-let addgenerator x = (fun y -> x + y)
+let addgenerator x = fold (fun a b -> fun c -> a (b + c)) (fun c -> x + c) []
+  (*
+  (fun y -> x + y)
+  *)
 
 let uniq lst = 
+  let member target lst = 
+    fold (fun a x -> if x == target then true else a) false lst
+  in
 
-  fold (fun a x -> if ((fold (fun a x -> if x == target then true else a) false lst) x a) == false then x :: a else a) [] lst
-(*
-let member target lst = 
-  fold (fun a x -> if x == target then true else a) false lst
-*)
+  fold (fun a x -> if (member x a) == false then x :: a else a) [] lst
+
+
 let ap fns args = fold (fun a x -> a @ (map x args)) [] fns
