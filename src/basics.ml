@@ -112,7 +112,8 @@ let is_present lst x = map (fun y -> if y == x then 1 else 0) lst
 
 let count_occ lst target = fold (fun a x -> if x == target then a + 1 else a) 0 lst
   
-let jumping_tuples lst1 lst2 = fold (fun a x -> a @ x) [] lst1
+let jumping_tuples lst1 lst2 = failwith "unimplemented"
+
   (*
   let combined = zip lst1 lst2 in
 
