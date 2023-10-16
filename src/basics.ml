@@ -137,11 +137,11 @@ let jumping_tuples lst1 lst2 = failwith "unimplemented"
 let addgenerator x = (fun y -> x + y)
 
 let uniq lst = 
-  let member target lst = 
-    fold (fun a x -> if x == target then true else a) false lst
-  in
 
   fold (fun a x -> if (member x a) == false then x :: a else a) [] lst
 
+let member target lst = 
+  fold (fun a x -> if x == target then true else a) false lst
+in
 
 let ap fns args = fold (fun a x -> a @ (map x args)) [] fns
