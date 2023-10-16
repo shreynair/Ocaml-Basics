@@ -112,7 +112,8 @@ let is_present lst x = map (fun y -> if y == x then 1 else 0) lst
 
 let count_occ lst target = fold (fun a x -> if x == target then a + 1 else a) 0 lst
   
-let jumping_tuples lst1 lst2 = 
+let jumping_tuples lst1 lst2 = failwith "Failed"
+  (*
   let combined = zip lst1 lst2 in
 
   let tuple_index target tup_lst =
@@ -130,6 +131,7 @@ let jumping_tuples lst1 lst2 =
   in
 
   (jumping_tuples_helper combined 0) @ (jumping_tuples_helper combined 1)
+  *)
 
 let addgenerator x = (fun y -> x + y)
 
