@@ -133,7 +133,7 @@ let jumping_tuples lst1 lst2 = failwith "unimplemented"
   (jumping_tuples_helper combined 0) @ (jumping_tuples_helper combined 1)
   *)
 
-let addgenerator x = fold (fun a b -> fun c -> a (b + c)) (fun c -> x + c) []
+let addgenerator x = fold (fun q r -> fun s -> q (r + s)) (fun s -> x + s) []
   (*
   (fun y -> x + y)
   *)
